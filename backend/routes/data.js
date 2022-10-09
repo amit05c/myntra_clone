@@ -26,52 +26,90 @@ dataRouter.get("/sort", async (req, res) => {
 
 dataRouter.get("/filter", async (req, res) => {
   let query = req.query;
-  // console.log(query)
+  console.log(query)
   let price = query.price?.split(" ") || [];
-  let item = query.item?.split(",") || []
+  let item = query.item?.split(",") || [];
   let category = query.category;
 
-  let search = {
-    item: query.item?.split(",") || [],
-  };
+//   let filter = {}
+
+// if(category)
+// {
+//   filter.category = category
+// }
+// if(price.length>0)
+// {
+//   filter.price = price
+// }
+// if(item.length>0)
+// {
+//   filter.item = item
+// }
+
+// let data = await DataModel.find({
+//     $and: [{ price: { $gte: filter.price[0] } }, { price: { $lte: filter.price[1] },item: {$all: item} }],
+//   });
+//   res.send(data);
+  //   let search = {
+  //     item: query.item?.split(",") || [],
+  //   };
   // console.log(item)
-  if (price.length > 0 && item.length > 0 && category.length > 0) {
-    console.log("all")
+  if (price.length > 0 && item.length > 0 && category) {
+    console.log("all");
+    let data = await DataModel.find({
+      $and: [{ price: { $gte: price[0] } }, { price: { $lte: price[1] },item: {$all: item},category }],
+    });
+    // let data = await DataModel.find({
+    //     item: { $all: item },
+    //     price: { $gte: price[0] },
+    //     price: { $lte: price[1] },
+    //     category
+    //   });
+    // let newData = data.filter((el) => item.includes(el.item));
+    // console.log(data);
+    res.send(data);
+  } else if (price.length > 0 && item.length > 0) {
+    //PI
+    let data = await DataModel.find({
+        $and: [{ price: { $gte: price[0] } }, { price: { $lte: price[1] },item: {$all: item} }]
+      });
+    res.send(data);
+  } else if (price.length > 0 && category) {
+    //PC
+    console.log("pc");
+    let data = await DataModel.find({
+        $and: [{ price: { $gte: price[0] } }, { price: { $lte: price[1] },category }],
+      });
+    res.send(data);
+  } else if (item.length > 0 && category) {
+    //IC
+    console.log("IC");
+    let data = await DataModel.find({ item: { $all: item }, category });
+    res.send(data);
+  } else if (item.length > 0 && price.length > 0) {
+    //IP
     let data = await DataModel.find({
       item: { $all: item },
       price: { $gte: price[0] },
       price: { $lte: price[1] },
-      category,
     });
     console.log(data);
     res.send(data);
-  } else if (price.length > 0 && item.length > 0) {
+  }else if(price.length>0){
     let data = await DataModel.find({
-      item: { $all: item },
-      price: { $gte: price[0] },
-      price: { $lte: price[1] },
-    });
+        $and: [{ price: { $gte: price[0] } }, { price: { $lte: price[1] } }],
+      });
+      res.send(data)
+  }else if(item.length>0){
+    //I
+    
+    let data = await DataModel.find({ item: { $all: item } });
     res.send(data);
-  } else if (price.length > 0 && category.length > 0) {
-    console.log("pc")
-    let data = await DataModel.find({
-      price: { $gte: Number(price[0]) },
-      price: { $lte: Number(price[1]) },
-      category,
-    });
+  }else{
+    // C
+    let data = await DataModel.find({category});
     res.send(data);
-  } else if (item.length > 0 && category.length > 0) {
-    console.log("IC")
-    let data = await DataModel.find({ item: { $all: item }, category });
-    res.send(data);
-  }else if(item.length>0 && price.length>0){
-    let data = await DataModel.find({item: {$all: item} ,price: {$gte:price[0]}, price :{$lte: price[1]}})
-    console.log(data)
-    res.send(data) 
   }
-
-
-
 });
 
 module.exports = {
