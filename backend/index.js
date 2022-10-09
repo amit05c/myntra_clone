@@ -16,7 +16,7 @@ app.use("/data",dataRouter)
 app.use(authentication)
 app.use("/cart",cartRouter)
 
-app.listen(8080,async(req,res)=>{
+app.listen(8080,async()=>{
   try{
      await connection
      console.log("server connected")

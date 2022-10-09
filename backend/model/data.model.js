@@ -4,7 +4,7 @@ const dataSchema= new mongoose.Schema({
     category: {type: String, require:true},
     title: {type: String, require : true},
     item: String,
-    images_url: {type: [String]},
+    image_url: {type: [String]},
     price: Number,
     _id:String
 })
