@@ -1,0 +1,22 @@
+.logo{
+    font-size: 30px;
+    color: blue;
+}
+
+@media (max-width: 920px) {
+    .logo{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 720px) {
+    .logo{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 520px) {
+    .logo{
+        font-size: 10px;
+    }
+}
