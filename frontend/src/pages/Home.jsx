@@ -46,7 +46,7 @@ const Home = () => {
     autoplay: true,
   };
   return (
-    <Box>
+    <Box  zIndex={"1"} mt="8rem">
 
      <Box w={"95%"} m={"auto"} mt={"1rem"}>
      <Slider {...settings}>

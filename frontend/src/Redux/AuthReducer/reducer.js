@@ -1,4 +1,4 @@
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, SIGNUP_FAILURE, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "./action.type"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT, SIGNUP_FAILURE, SIGNUP_REQUEST, SIGNUP_SUCCESS } from "./action.type"
 
 
 const initialVal= {
@@ -55,6 +55,13 @@ export const reducer= (state=initialVal,action)=>{
             return {
                 ...state,
                 isError: true
+            }
+        }
+
+        case LOGOUT:{
+            return {
+                ...state,
+                isAuth:false
             }
         }
 

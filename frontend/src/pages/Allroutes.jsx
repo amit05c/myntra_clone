@@ -7,6 +7,7 @@ import Men from './Men'
 import Signup from './Signup'
 import Cart from "./Cart"
 import Women from './Women'
+import Checkout from './Checkout'
 
 const Allroutes = () => {
   return (
@@ -18,6 +19,7 @@ const Allroutes = () => {
         <Route path='/women' element={<Women/>}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
         <Route path='/cart' element={<Cart />}/>
+        <Route path='/checkout' element={<Checkout />}/>
 
     </Routes>
   )

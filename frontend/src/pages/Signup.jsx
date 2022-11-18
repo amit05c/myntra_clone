@@ -49,14 +49,14 @@ const Signup = () => {
     })
   }
   return (
-    <Box height="110vh" bg="#ffffff">
+    <Box bg="#ffffff" mt={"7rem"}>
     <Divider orientation="horizontal" />
     <Box
-      width="1150px"
+      // width="1150px"
       position="center"
       margin="auto"
       padding="20px 0px 80px 0px"
-      height="900px"
+      // height="900px"
     >
       <Box width="20%" textAlign="left">
         <Breadcrumb fontWeight="light" fontSize="sm">
@@ -64,7 +64,7 @@ const Signup = () => {
             <BreadcrumbLink href="/">Home</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/signup">Sign-Up</BreadcrumbLink>
+            <BreadcrumbLink href="/login">Login</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumb>
       </Box>
@@ -73,8 +73,9 @@ const Signup = () => {
           Sign Up
         </Heading>
       </Box>
-      <Divider orientation="horizontal" />
-      <Box width="50%" margin="0 auto" padding="50px 0px 0px 0px">
+      {/* <Divider orientation="horizontal" /> */}
+      <Box w={['60%','50%','30%']} margin="auto" padding={['0.5rem','1rem','2rem']}
+      shadow={"rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset"}>
         <Stack spacing={4}>
           {/* <Box background="none" color="none">
             <FormControl isRequired>
@@ -149,7 +150,7 @@ const Signup = () => {
         </Stack>
         <Box paddingTop="26px">
           Already a user?{" "}
-          <Link color="teal.500" href="sign-in">
+          <Link color="teal.500" href="/login">
             Sign Up
           </Link>
         </Box>

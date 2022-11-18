@@ -14,6 +14,7 @@ export const login=(data)=>(dispatch)=>{
     .catch(err=>dispatch({type: types.LOGIN_FAILURE}))
 }
 
+
 export const SingleProd= (id)=>{
      return axios.get(`https://odd-jade-fawn-toga.cyclic.app/singleProd/${id}`)
 }

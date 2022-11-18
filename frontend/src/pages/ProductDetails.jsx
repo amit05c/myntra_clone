@@ -29,13 +29,14 @@ const breakpoints = {
 }
 
 const breakpoints_width={
-  sm: "50%",
+  sm: "60%",
   lg: "100%"
 }
 
 
 const text_width={
-  sm: "10%",
+  sm: "20%",
+  md: "15%",
   lg: "8%"
 }
 
@@ -49,6 +50,8 @@ const ProductDetails = () => {
   const { id } = useParams();
   const navigate= useNavigate()
   const  {data}  = useSelector((state) => state.AppReducer);
+  const {isAuth}= useSelector(state=>state.AuthReducer)
+  console.log(isAuth)
 //   const {cartData} = useSelector((state)=>state.CartReducer)
   // console.log(cartData)
   const dispatch = useDispatch();
@@ -71,16 +74,13 @@ const ProductDetails = () => {
   }, []);
   // console.log(cartData.length+1)
   const addToCart=async ()=>{
+    if(isAuth==false){
+      navigate("/login")
+    }else{
     
     const newData={
-      // id:cartData.length+1,
-      // productId:singleProd[0]._id,
-      // title:singleProd[0].title,
-      // price:singleProd[0].price,
        size:selectSize,
        qty,
-      // category:singleProd[0].category,
-      // image: singleProd[0].image_url
     }
      
     // console.log(newData)
@@ -98,8 +98,10 @@ const ProductDetails = () => {
       alert(`Select the size`)
     }else{
         alert(`Please login first`)
+        .then(()=>navigate("/login"))
     }
   
+  }
   }
 
 
@@ -137,24 +139,25 @@ const ProductDetails = () => {
   },[])
 
   return (
-    <Flex    justifyContent="space-evenly"     // border={"1px solid red"}
-     margin={"2rem 0 5rem 0"}
-     direction={breakpoints}
+    <Flex    justifyContent="space-evenly"      border={"1px solid red"}
+    //  margin={"2rem 0 5rem 0"}
+     direction={['column','column','row']}
      gap="1rem"
-     height={"110vh"}
     >
-      <Flex width={"40%"} margin={innerDivMargin}  border={"2px solid black"}
+      <Flex width={['60%','50%','40%']}   border={"2px solid black"}
       borderRadius="2%"
       direction="column"
-      padding={"1rem"}
+      padding={['0.25rem','0.5rem','0.5rem']}
       gap="1rem"
+      m="auto"
+      h={['60vh','70vh','90vh']}
       
        > 
-       <Box data-aos='fade-up' bg={"black"} color="white" width={text_width} position={"relative"} top="1rem" left="1rem"><Text>Sale</Text></Box>         
+       <Box  bg={"black"} color="white" width={text_width} position={"relative"} top="0.5rem" left="1rem"><Text>Sale</Text></Box>         
         <Image  src={singleProd[0]?.image_url[0]}   
-        margin="auto" width="60%"
+        margin="auto" width={['50%','50%','50%']}
         cursor={"pointer"}
-        height="80%"
+        // height="80%"
         />
 
         <Box display={"flex"}>
@@ -184,9 +187,10 @@ const ProductDetails = () => {
          borderRadius="2%"
         direction="column"
         justifyContent="space-evenly"
-       margin={innerDivMargin}
-        
-        width="40%"
+        padding={['0.25rem','0.5rem','1rem']}
+        m="auto"
+        h={['60vh','70vh','90vh']}
+        width={['60%','50%','40%']}
         
       >
         <Stack>
@@ -194,7 +198,7 @@ const ProductDetails = () => {
         //  border={"1px solid red"}
           width="50%"
            margin={"auto"}>
-        <Text as={"b"} fontFamily="sans-serif" fontStyle={"revert-layer"} fontSize="1.5rem">{`Title: ${singleProd[0]?.title}`}</Text>
+        <Text as={"b"} fontFamily="sans-serif" fontStyle={"revert-layer"} fontSize={['0.5rem','1rem','1.5rem']}>{`Title: ${singleProd[0]?.title}`}</Text>
 
           </Box>
           <Box>
@@ -209,9 +213,10 @@ const ProductDetails = () => {
 
         </Stack>
         
-        <Stack width="50%" ml="1rem"  
-          // border="1px solid red"
-        position={"relative"} left="9rem"
+        <Stack width={['70%','60%','50%']} 
+        m="auto"
+           border="1px solid red"
+        
         >
           <Select color="gray" placeholder="Select size"  onChange={(e)=>setSize(e.target.value)}>
             {singleProd[0]?.size?.map((el, i) => (
@@ -226,11 +231,11 @@ const ProductDetails = () => {
        
          justifyContent={"space-around"}>
        <Box display={"flex"}
-        gap="0.5rem"
+        // gap="0.5rem"
         border="2px solid black"
         borderRadius={"3%"}
         ml="1rem"
-        padding="0.5rem"
+        padding={['0.1rem','0.25rem','0.5rem']}
        >
         <Button borderRadius="50%" bg={"#7d7d7d"} disabled={qty==1} onClick={()=>setQty(qty-1)}>-</Button>
         <Flex>{qty}</Flex>
@@ -238,10 +243,10 @@ const ProductDetails = () => {
        </Box>
 
         <Box>
-        <Button bg="#1f1f1f" _hover={"none"} color="white" mt={"1rem"} onClick={addToCart}>Add to cart</Button>
+        <Button bg="#1f1f1f"  color="white" mt={"1rem"} onClick={addToCart}>Add to cart</Button>
         </Box>
 
-        <Button bg="#1f1f1f" _hover={"none"} color="white" mt="1rem" onClick={handleBuy}>Buy</Button>
+        {/* <Button bg="#1f1f1f"  color="white" mt="1rem" onClick={handleBuy}>Buy</Button> */}
           
         </Flex>
       </Flex>

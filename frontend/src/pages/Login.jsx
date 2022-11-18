@@ -42,7 +42,7 @@ const Login = () => {
         navigate("/")
       }else{
         toast({
-          description: "Please enter credentials",
+          description: "Please enter correct credentials",
           status: 'error',
           duration: 5000,
           isClosable: true,
@@ -51,14 +51,18 @@ const Login = () => {
     })
   }
   return (
-    <Box height="110vh" bg="#ffffff">
+    <Box  bg="#ffffff" 
+    // w={['60%','40%','30%']}
+    mt="7rem"
+    >
+      {/* box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset; */}
     <Divider orientation="horizontal" />
     <Box
-      width="1150px"
+      // width="1150px"
       position="center"
       margin="auto"
       padding="20px 0px 80px 0px"
-      height="900px"
+    
     >
       <Box width="20%" textAlign="left">
         <Breadcrumb fontWeight="light" fontSize="sm">
@@ -72,11 +76,13 @@ const Login = () => {
       </Box>
       <Box width="100%" padding="20px 0px 20px">
         <Heading as="h3" size="lg" fontWeight="medium" textAlign="center">
-          Sign Up
+          LOGIN
         </Heading>
       </Box>
-      <Divider orientation="horizontal" />
-      <Box width="50%" margin="0 auto" padding="50px 0px 0px 0px">
+      {/* <Divider orientation="horizontal" /> */}
+      <Box w={['60%','50%','30%']} margin="0 auto" padding={['0.5rem','1rem','2rem']}
+      shadow={"rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset"}
+      >
         <Stack spacing={4}>
           {/* <Box background="none" color="none">
             <FormControl isRequired>
@@ -93,7 +99,7 @@ const Login = () => {
               />
             </FormControl>
           </Box> */}
-          <Box>
+          <Box >
             <FormControl isRequired>
               <FormLabel fontWeight="hairline">Email address</FormLabel>
               <Input
@@ -151,7 +157,7 @@ const Login = () => {
         </Stack>
         <Box paddingTop="26px">
           Already a user?{" "}
-          <Link color="teal.500" href="sign-in">
+          <Link color="teal.500" href="/signup">
             Sign Up
           </Link>
         </Box>
@@ -169,7 +175,7 @@ const Login = () => {
             border: "1px solid black",
           }}
         >
-          Sign Up
+          LOGIN
         </Button>
       </Box>
     </Box>
