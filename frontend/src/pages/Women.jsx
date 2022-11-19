@@ -18,7 +18,28 @@ const Women = () => {
   const dispatch = useDispatch();
   let item= searchParams.getAll("item")
   let price= searchParams.getAll("price")
-  console.log(price)
+  // console.log(price)
+
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+  
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // console.log(windowDimensions)
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
+
   useEffect(() => {
    
     if(item.length>0 || price.length>0){
@@ -41,13 +62,13 @@ const Women = () => {
     }
       
   }, [item.length,price.length,location]);
-  console.log(data);
+  // console.log(data);
   
 
   
   
   return (
-    <Flex mt="7rem">
+    <Flex mt={windowDimensions.width>920 && "8rem"}>
       <Filter/>
 
       <Grid templateColumns={['repeat(1, 1fr)','repeat(2, 1fr)','repeat(4, 1fr)']} gap={['3rem','3rem','5rem']} m="2rem 2rem">

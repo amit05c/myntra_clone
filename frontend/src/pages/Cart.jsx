@@ -32,13 +32,33 @@ const Cart = () => {
     navigate("/checkout")
   }
 
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+  
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // console.log(windowDimensions)
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
+
   useEffect(()=>{
     getData()
   },[])
 
   
   return (
-    <Box mt="7rem">
+    <Box mt={windowDimensions.width>920 && "8rem"}>
      {data?.map(el=>(
       <Box key={el._id}>
         <Flex justifyContent={"space-around"} mt="1rem" shadow={"rgba(0, 0, 0, 0.16) 0px 1px 4px"} alignItems="center">

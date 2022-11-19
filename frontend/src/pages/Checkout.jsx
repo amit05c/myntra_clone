@@ -6,6 +6,26 @@ const Checkout = () => {
     const toast = useToast()
     const navigate= useNavigate()
     const [Payemnt_method,setMethod]=useState(false)
+
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+  
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // console.log(windowDimensions)
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
     
     const [data,setData]= useState({
         name:"",
@@ -94,7 +114,7 @@ setMethod(true)
 }
 
   return (
-    <Flex justifyContent={"space-around"} mt={"8rem"}>
+    <Flex justifyContent={"space-around"} mt={windowDimensions.width>920 && "8rem"}>
         <Box w={['80%','70%','50%']}  padding={['0.5rem','1rem','2rem']}
       shadow={"rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset"}>
         <Stack spacing={4}>

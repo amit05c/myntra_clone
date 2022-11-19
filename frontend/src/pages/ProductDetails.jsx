@@ -51,18 +51,34 @@ const ProductDetails = () => {
   const navigate= useNavigate()
   const  {data}  = useSelector((state) => state.AppReducer);
   const {isAuth}= useSelector(state=>state.AuthReducer)
-  console.log(isAuth)
-//   const {cartData} = useSelector((state)=>state.CartReducer)
-  // console.log(cartData)
+ 
   const dispatch = useDispatch();
   const [selectSize,setSize]= useState('')
   const [qty,setQty]= useState(1)
   
   const token=JSON.parse(localStorage.getItem("token"))
   const singleProd = data.filter((el) => el._id === id);
-//   const sizes = singleProd?.size?.split(" ").map(Number);
-//   console.log(sizes);
-  console.log(singleProd);
+
+
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+  
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // console.log(windowDimensions)
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
   
     
 
@@ -139,7 +155,7 @@ const ProductDetails = () => {
   },[])
 
   return (
-    <Flex    justifyContent="space-evenly" mt={"7rem"}    // border={"1px solid red"}
+    <Flex    justifyContent="space-evenly" mt={windowDimensions.width>920 && "8rem"}    // border={"1px solid red"}
     //  margin={"2rem 0 5rem 0"}
      direction={['column','column','row']}
      gap="1rem"

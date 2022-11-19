@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -37,6 +37,30 @@ import c24 from "../images/c24.webp"
 
 
 const Home = () => {
+
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+useEffect(() => {
+  function handleResize() {
+    setWindowDimensions(getWindowDimensions());
+  }
+
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
+// console.log(windowDimensions)
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
+
+
+
   var settings = {
     dots: true,
     infinite: true,
@@ -46,7 +70,7 @@ const Home = () => {
     autoplay: true,
   };
   return (
-    <Box  zIndex={"1"} mt="8rem">
+    <Box  zIndex={"1"} mt={windowDimensions.width>920 && "8rem"}>
 
      <Box w={"95%"} m={"auto"} mt={"1rem"}>
      <Slider {...settings}>

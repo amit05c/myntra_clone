@@ -18,7 +18,7 @@ const [searchParams,setSearchParams]= useSearchParams()
 const [category,setCategory]= useState([])
 const {isAuth}= useSelector(state=>state.AuthReducer)
 const dispatch= useDispatch()
-console.log(isAuth)
+// console.log(isAuth)
 const navigate= useNavigate()
 
 const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
@@ -53,9 +53,9 @@ function getWindowDimensions() {
 
     navigate("/login")
   }
-  useEffect(()=>{
-    console.log("amit")
-  },[])
+  // useEffect(()=>{
+  //   console.log("amit")
+  // },[])
   return (
     <>    {windowDimensions.width>920 ? (<Flex
     

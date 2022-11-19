@@ -34,17 +34,17 @@ const Mobileview = () => {
    
     <MenuItem >
     {/* icon={<ExternalLinkIcon />} */}
-    {token ? <Button onClick={()=>{localStorage.removeItem("token");navigate("/login")}}>Logout</Button> : <Text onClick={()=>navigate("/login")}>Login</Text> }  
+    {token ? <Text onClick={()=>{localStorage.removeItem("token");navigate("/login")}}>Logout</Text> : <Text onClick={()=>navigate("/login")}>Login</Text> }  
     </MenuItem>
     <Divider orientation="horizontal" />
-    <MenuItem icon={<RepeatIcon />}>
+    <MenuItem >
       <Text onClick={()=>navigate("/men")}>Men</Text>
     </MenuItem>
-    <MenuItem icon={<EditIcon />}>
+    <MenuItem>
     <Text onClick={()=>navigate("/women")}>Women</Text>
     </MenuItem>
-    <MenuItem icon={<AddIcon onClick={()=>{token ? navigate("/cart") : navigate("/login")}} cursor={"pointer"} />}>
-    Bag
+    <MenuItem >
+    <Text onClick={()=>{token ? navigate("/cart") : navigate("/login")}} cursor={"pointer"}>Bag</Text>
     </MenuItem>
   </MenuList>
 </Menu>
