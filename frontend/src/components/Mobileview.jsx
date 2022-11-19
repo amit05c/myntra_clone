@@ -12,7 +12,7 @@ import {
   } from '@chakra-ui/react'
 import { AddIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, RepeatIcon } from '@chakra-ui/icons'
 import { Link, useNavigate } from 'react-router-dom'
-
+// check
 const Mobileview = () => {
     const navigate= useNavigate()
     let token= JSON.parse(localStorage.getItem("token"))
