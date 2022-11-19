@@ -32,7 +32,7 @@ useEffect(() => {
   return () => window.removeEventListener('resize', handleResize);
 }, []);
 
-console.log(windowDimensions)
+// console.log(windowDimensions)
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
   return {

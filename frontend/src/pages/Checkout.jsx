@@ -92,16 +92,7 @@ const Checkout = () => {
 const handleRadio= (e)=>{
 setMethod(true)
 }
-console.log(Payemnt_method)
-    // toast({
-    //     size:"500",
-    //     position: 'top-center',
-    //     title: "Order Placed.",
-    //     description: "Thank you for shopping with us.",
-    //     status: "success",
-    //     duration: 9000,
-    //     isClosable: true,
-    //   });navigate("/")
+
   return (
     <Flex justifyContent={"space-around"} mt={"8rem"}>
         <Box w={['80%','70%','50%']}  padding={['0.5rem','1rem','2rem']}

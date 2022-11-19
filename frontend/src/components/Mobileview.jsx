@@ -41,7 +41,7 @@ const Mobileview = () => {
       <Text onClick={()=>navigate("/men")}>Men</Text>
     </MenuItem>
     <MenuItem icon={<EditIcon />}>
-    <Text onClick={()=>navigate("/women")}>Men</Text>
+    <Text onClick={()=>navigate("/women")}>Women</Text>
     </MenuItem>
     <MenuItem icon={<AddIcon onClick={()=>{token ? navigate("/cart") : navigate("/login")}} cursor={"pointer"} />}>
     Bag

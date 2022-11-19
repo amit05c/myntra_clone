@@ -47,7 +47,7 @@ const Women = () => {
   
   
   return (
-    <Flex height="80vh" mt="7rem">
+    <Flex mt="7rem">
       <Filter/>
 
       <Grid templateColumns={['repeat(1, 1fr)','repeat(2, 1fr)','repeat(4, 1fr)']} gap={['3rem','3rem','5rem']} m="2rem 2rem">

@@ -47,7 +47,7 @@ const Filter = () => {
           setPrice(x)
     }
   return (
-    <Box w="20%" h={['200vh','150vh','130vh']} border={"1px solid gray"} mt={['1rem','2rem','2rem']}>
+    <Box w="20%" h={['200vh','150vh','130vh']} border={"2px solid gray"} mt={['1rem','2rem','2rem']} borderTop="0" borderBottom={"0"}>
     <Text>Categories</Text>
      <Flex  direction="column" p={['0.5rem','1rem','1.5rem']}> 
       {/* border={"1px solid red"} */}
