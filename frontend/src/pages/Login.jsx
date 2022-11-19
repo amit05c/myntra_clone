@@ -42,6 +42,7 @@ const Login = () => {
         navigate("/")
       }else{
         toast({
+          position: 'top-center',
           description: "Please enter correct credentials",
           status: 'error',
           duration: 5000,

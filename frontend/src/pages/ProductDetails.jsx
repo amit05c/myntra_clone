@@ -139,7 +139,7 @@ const ProductDetails = () => {
   },[])
 
   return (
-    <Flex    justifyContent="space-evenly"      border={"1px solid red"}
+    <Flex    justifyContent="space-evenly" mt={"7rem"}    // border={"1px solid red"}
     //  margin={"2rem 0 5rem 0"}
      direction={['column','column','row']}
      gap="1rem"

@@ -50,8 +50,8 @@ const Cart = () => {
           </Flex>
           </Box>
           ))}
-          <Box ><Text as="b" color={"red.900"}>{`Total: ${total}`}</Text></Box>
-          <Button bg={"black"} color={"white"} onClick={handlePay}>Pay now</Button>
+       {data.length>0 ? <Box ><Text as="b" color={"red.900"}>{`Total: ${total}`}</Text></Box> : <Text as="b" color={"red.900"}>{`Cart Empty`}</Text> }   
+         {data.length >0 && <Button bg={"black"} color={"white"} onClick={handlePay}>Pay now</Button>} 
     </Box>
   )
 }
