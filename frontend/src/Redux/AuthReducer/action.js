@@ -11,7 +11,7 @@ export const login=(data)=>(dispatch)=>{
     dispatch({type: types.LOGIN_REQUEST})
    return axios.post(`https://odd-jade-fawn-toga.cyclic.app/user/login`,data)
     .then((res)=>dispatch({type: types.LOGIN_SUCCESS, payload: res.data.token}))
-    .catch(err=>dispatch({type: types.LOGIN_FAILURE}))
+    .catch(err=>dispatch({type: types.LOGIN_FAILURE, payload: console.log(err)}))
 }
 
 

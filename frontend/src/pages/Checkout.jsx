@@ -1,4 +1,5 @@
 import { Box, BreadcrumbLink, Divider, FormControl, FormLabel, Heading, Input, InputGroup, InputRightElement, Link, Stack, Breadcrumb, BreadcrumbItem, Button, useToast, Flex, Text, RadioGroup, Radio, Image, Alert, AlertIcon, AlertTitle, AlertDescription  } from '@chakra-ui/react'
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -94,15 +95,33 @@ const Checkout = () => {
         }
         
         else{
-          toast({
-        size:"500",
-        position: 'top-center',
-        title: "Order Placed.",
-        description: "Thank you for shopping with us.",
-        status: "success",
-        duration: 4000,
-        isClosable: true,
-      });navigate("/")
+      
+          let token= JSON.parse(localStorage.getItem("token"))
+          axios.delete("https://odd-jade-fawn-toga.cyclic.app/cart/checkout",{
+            headers:{authorization: `bear ${token}`},  
+          }).then(res=>{if(res.data="Item deleted"){
+                 
+            toast({
+              size:"500",
+              position: 'top-center',
+              title: "Order Placed.",
+              description: "Thank you for shopping with us.",
+              status: "success",
+              duration: 4000,
+              isClosable: true,
+            });  navigate("/")
+
+          }})
+          .catch((err)=> toast({
+            position: 'top-center',
+            description: "Enter Lankmark",
+            status: err.message,
+            duration: 2000,
+            isClosable: true,
+          }))
+
+
+         
         }
     }
 // useEffect(()=>{

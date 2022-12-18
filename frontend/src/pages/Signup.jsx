@@ -1,17 +1,18 @@
 import { Box, BreadcrumbLink, Divider, FormControl, FormLabel, Heading, Input, InputGroup, InputRightElement, Link, Stack, Breadcrumb, BreadcrumbItem, Button, useToast  } from '@chakra-ui/react'
 import React, { useState } from 'react'
-// import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch,useSelector } from 'react-redux';
 import { signup } from '../Redux/AuthReducer/action';
 import { SIGNUP_SUCCESS } from '../Redux/AuthReducer/action.type';
 import { useNavigate } from 'react-router-dom';
 const initialState = {
-  name: "",
+  // name: "",
   email: "",
   password: ""
 };
 const Signup = () => {
   const [data,setData]= useState(initialState)
+  const [showPassword,setShowPassword]= useState(false)
   const state= useSelector((state)=>state.AuthReducer)
   const toast = useToast()
   const dispatch= useDispatch()
@@ -27,26 +28,36 @@ const Signup = () => {
 
   const signupHandler= ()=>{
     // console.log(data)
-    dispatch(signup(data))
-    .then(res=>{
-      if(res.type==SIGNUP_SUCCESS){
-        toast({
-          title: 'Account created.',
-          description: "Your account has been successfully created",
-          status: 'success',
-          duration: 5000,
-          isClosable: true,
-        })
-        navigate("/login")
-      }else{
-        toast({
-          description: "Please enter credentials",
-          status: 'error',
-          duration: 5000,
-          isClosable: true,
-        })
-      }
-    })
+    if(data.email !="" && data.password !== ""){
+      dispatch(signup(data))
+      .then(res=>{
+        if(res.type==SIGNUP_SUCCESS){
+          toast({
+            title: 'Account created.',
+            description: "Your account has been successfully created",
+            status: 'success',
+            duration: 5000,
+            isClosable: true,
+          })
+          navigate("/login")
+        }else{
+          toast({
+            description: "Already registered",
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+      })
+    }else{
+      toast({
+        description: "Please enter all the details",
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      })
+    }
+   
   }
   return (
     <Box bg="#ffffff" mt={"7rem"}>
@@ -128,7 +139,7 @@ const Signup = () => {
               <FormLabel fontWeight="hairline">Password</FormLabel>
               <InputGroup>
               <Input
-                // type={showPassword ? "text" : "password"}
+                 type={showPassword ? "text" : "password"}
                 value={data.password}
                 
                 name="password"
@@ -137,11 +148,11 @@ const Signup = () => {
               <InputRightElement h={"full"}>
                 <Button
                   variant={"ghost"}
-                  // onClick={() =>
-                  //   setShowPassword((showPassword) => !showPassword)
-                  // }
+                  onClick={() =>
+                    setShowPassword((showPassword) => !showPassword)
+                  }
                 >
-                  {/* {showPassword ? <ViewIcon /> : <ViewOffIcon />} */}
+                  {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                 </Button>
               </InputRightElement>
             </InputGroup>
@@ -151,7 +162,7 @@ const Signup = () => {
         <Box paddingTop="26px">
           Already a user?{" "}
           <Link color="teal.500" href="/login">
-            Sign Up
+            Login
           </Link>
         </Box>
         <Button
@@ -168,7 +179,7 @@ const Signup = () => {
             border: "1px solid black",
           }}
         >
-          Sign Up
+          Sign up
         </Button>
       </Box>
     </Box>

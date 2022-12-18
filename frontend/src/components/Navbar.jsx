@@ -1,4 +1,4 @@
-import { Box, Flex, Input, Text,Image, Button } from "@chakra-ui/react";
+import { Box, Flex, Input, Text,Image, Button, Avatar, AvatarBadge } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
 import { GiEternalLove } from "react-icons/gi";
@@ -94,7 +94,10 @@ function getWindowDimensions() {
   </div>
         
         </IconContext.Provider>
-      {isAuth ? <Button bg={isAuth? "green" : "red"} onClick={handleLogout}>Logout</Button> : <Text>Profile</Text>}  
+      {isAuth ? <Flex gap={"1rem"}> <Avatar>
+    <AvatarBadge boxSize='1.25em' bg='green.500' />
+  </Avatar>
+ <Button bg={isAuth? "green" : "red"} onClick={handleLogout}>Logout</Button> </Flex>: <Text>Profile</Text>}  
         </Box>
 
         <Box>

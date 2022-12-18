@@ -4,7 +4,7 @@ import Allroutes from './pages/Allroutes';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-
+//testing
 function App() {
   return (
     <div className="App">
