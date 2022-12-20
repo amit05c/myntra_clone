@@ -102,7 +102,7 @@ const ProductDetails = () => {
     // console.log(newData)
     
     if(selectSize!=="" && token){
-      await axios.post(`https://odd-jade-fawn-toga.cyclic.app/cart/add/${id}`,newData,{
+      await axios.post(`https://myntraserver-production.up.railway.app/cart/add/${id}`,newData,{
         headers:{authorization: `bear ${token}`},  //authorization
       },)
     //   .then(()=>dispatch(getCartData()))
@@ -218,7 +218,7 @@ const ProductDetails = () => {
 
           </Box>
           <Box>
-          <Text as={"b"}>{`Brand: ${singleProd[0]?.brand}`}</Text>
+         {singleProd[0]?.brand &&  <Text as={"b"}>{`Brand: ${singleProd[0]?.brand}`}</Text>}     
           </Box>
         
         <Box>
@@ -230,9 +230,7 @@ const ProductDetails = () => {
         </Stack>
         
         <Stack width={['70%','60%','50%']} 
-        m="auto"
-           border="1px solid red"
-        
+        m="auto" shadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
         >
           <Select color="gray" placeholder="Select size"  onChange={(e)=>setSize(e.target.value)}>
             {singleProd[0]?.size?.map((el, i) => (
@@ -247,14 +245,16 @@ const ProductDetails = () => {
        
          justifyContent={"space-around"}>
        <Box display={"flex"}
-        // gap="0.5rem"
+        gap="0.5rem"
         border="2px solid black"
         borderRadius={"3%"}
         ml="1rem"
         padding={['0.1rem','0.25rem','0.5rem']}
+        justifyContent="space-between"
+        alignItems={"center"}
        >
         <Button borderRadius="50%" bg={"#7d7d7d"} disabled={qty==1} onClick={()=>setQty(qty-1)}>-</Button>
-        <Flex>{qty}</Flex>
+        <Text as="b" color={"red.500"}>{qty}</Text>
         <Button bg={"#7d7d7d"}  borderRadius="50%" disabled={qty==10} onClick={()=>setQty(qty+1)} >+</Button>
        </Box>
 

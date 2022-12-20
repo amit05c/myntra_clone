@@ -27,6 +27,7 @@ export const reducer= (state=initialVal,action)=>{
         case GET_FAILURE:{
             return {
                 ...state,
+                isLoading:false,
                 isError: true
             }
         }

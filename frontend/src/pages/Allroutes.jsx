@@ -9,6 +9,7 @@ import Cart from "./Cart"
 import Women from './Women'
 import Checkout from './Checkout'
 import ReqAuth from '../ReqAuth/ReqAuth'
+import Kids from './Kids'
 
 const Allroutes = () => {
   return (
@@ -18,6 +19,7 @@ const Allroutes = () => {
         <Route path='/login' element={<Login/>}/>
         <Route path='/men' element={<Men/>}/>
         <Route path='/women' element={<Women/>}/>
+        <Route path='/kids' element={<Kids />}/>
         <Route path='/product/:id' element={<ProductDetails/>}/>
         <Route path='/cart' element={<ReqAuth><Cart /></ReqAuth> }/>
         <Route path='/checkout' element={<ReqAuth><Checkout /></ReqAuth> }/>

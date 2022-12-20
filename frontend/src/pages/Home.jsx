@@ -33,6 +33,7 @@ import c21 from "../images/c21.webp"
 import c22 from "../images/c22.webp"
 import c23 from "../images/c23.webp"
 import c24 from "../images/c24.webp"
+import { Link } from 'react-router-dom';
 
 
 
@@ -75,22 +76,22 @@ function getWindowDimensions() {
      <Box w={"95%"} m={"auto"} mt={"1rem"}>
      <Slider {...settings}>
       <div>
-      <img src={banner1} alt="" />
+    <Link to="/women"><img src={banner1} alt="" /></Link>  
       </div>
       <div>
-      <img src={banner2} alt="" />
+    <Link to="/women"> <img src={banner2} alt="" /></Link>
       </div>
       <div>
-      <img src={banner3} alt="" />
+    <Link to="/men"><img src={banner3} alt="" /></Link>  
       </div>
       <div>
-      <img src={banner4} alt="" />
+    <Link to="/men"></Link>  <img src={banner4} alt="" />
       </div>
       <div>
-      <img src={banner5} alt="" />
+     <Link to="/men"><img src={banner5} alt="" /></Link> 
       </div>
       <div>
-      <img src={banner6} alt="" />
+     <Link to="/women"> <img src={banner6} alt="" />  </Link>
       </div>
     </Slider>
      </Box>
@@ -101,102 +102,150 @@ function getWindowDimensions() {
       <Text as="b" color={"teal"} fontSize={['lg','xl','3xl']}> SHOP BY CATEGORY</Text>
       <Grid  templateColumns={['repeat(2, 1fr)','repeat(3, 1fr)','repeat(5, 1fr)']} gap={['0.5rem','1rem','2rem']}>
       <GridItem>
+        <Link to="/women?item=Kurtas">
       <Image src={c1} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c2} alt="" />
+     <Link to="/women?item=Handbags">
+      <Image src={c2} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c3} alt="" />
+     <Link to="/men?item=Kurtas">
+      <Image src={c3} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c4} alt="" />
+     <Link to="/men?item=T-Shirt">
+      <Image src={c4} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c5} alt="" />
+     <Link to="/women?item=Sarees">
+      <Image src={c5} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c6} alt="" />
+     <Link to="/men?item=Shirt">
+      <Image src={c6} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c7} alt="" />
+     <Link to="/women?item=Jewellery">
+      <Image src={c7} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c8} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c8} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c9} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c9} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c10} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c10} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c11} alt="" />
+     <Link to="/men?item=Jeans">
+      <Image src={c11} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c12} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c12} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c13} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c13} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c14} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c14} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c15} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c15} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c16} alt="" />
-     </GridItem>
-
-
-     <GridItem>
-      <img src={c17} alt="" />
-     </GridItem>
-
-
-     <GridItem>
-      <img src={c18} alt="" />
-     </GridItem>
-
-     <GridItem>
-      <img src={c19} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c16} alt=""  />
+        </Link>
      </GridItem>
 
 
      <GridItem>
-      <img src={c20} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c17} alt=""  />
+        </Link>
+     </GridItem>
+
+
+     <GridItem>
+     <Link to="/women?item=Tops">
+      <Image src={c18} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c21} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c20} alt=""  />
+        </Link>
+     </GridItem>
+
+
+     <GridItem>
+     <Link to="/women?item=Tops">
+      <Image src={c21} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c22} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c22} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c23} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c23} alt=""  />
+        </Link>
      </GridItem>
 
      <GridItem>
-      <img src={c24} alt="" />
+     <Link to="/women?item=Tops">
+      <Image src={c23} alt=""  />
+        </Link>
+     </GridItem>
+
+     <GridItem>
+     <Link to="/women?item=Tops">
+      <Image src={c24} alt=""  />
+        </Link>
      </GridItem>
 
       </Grid>

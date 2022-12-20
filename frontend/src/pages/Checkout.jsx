@@ -97,7 +97,7 @@ const Checkout = () => {
         else{
       
           let token= JSON.parse(localStorage.getItem("token"))
-          axios.delete("https://odd-jade-fawn-toga.cyclic.app/cart/checkout",{
+          axios.delete("https://myntraserver-production.up.railway.app/cart/checkout",{
             headers:{authorization: `bear ${token}`},  
           }).then(res=>{if(res.data="Item deleted"){
                  

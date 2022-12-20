@@ -8,8 +8,8 @@ import { getData } from "../Redux/AppReducer/action";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import Filter from "../components/Filter";
 import { FilterSlider } from "../components/FilterSlider";
-const Men = () => {
-  const { data,isLoading } = useSelector((store) => store.AppReducer);
+const Kids = () => {
+  const { data } = useSelector((store) => store.AppReducer);
   const [searchParams]= useSearchParams()
   const filter =["Shirt","T-Shirt"]
 const location= useLocation()
@@ -17,7 +17,6 @@ const location= useLocation()
   const dispatch = useDispatch();
   let item= searchParams.getAll("item")
   let price= searchParams.getAll("price")
-  const [loading,setLoading]= useState(false)
   // console.log(price)
 
 
@@ -41,7 +40,7 @@ const location= useLocation()
     };
   }
   useEffect(() => {
-     setLoading(true)
+   
     if(item.length>0 || price.length>0){
       const queryParams={
         params:{
@@ -51,16 +50,14 @@ const location= useLocation()
         }
       }
       dispatch(getData(queryParams))
-      //.then(()=>setLoading(false))
     }else{
       const queryParams={
         params:{
-           category:['men'],
+           category:['kids'],
           
         }
       }
-      dispatch(getData(queryParams))
-      //.then(()=>setLoading(false))
+      dispatch(getData(queryParams));
     }
       
   }, [item.length,price.length,location.search]);
@@ -103,4 +100,4 @@ w="80%" >
   );
 };
 
-export default Men;
+export default Kids;

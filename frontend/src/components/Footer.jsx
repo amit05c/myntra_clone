@@ -177,7 +177,7 @@ const FooterPart = () => {
             </div>
           </div>
           <div>
-            <div style={{ display: "flex", width: "120px" }}>
+            <div style={{ display: "flex", width: "120px", marginTop: "1rem" }}>
               <div>
                 {" "}
                 <GoLocation className={styles.help} size="2rem" />
