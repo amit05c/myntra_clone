@@ -38,7 +38,7 @@ import { Link } from 'react-router-dom';
 
 
 const Home = () => {
-
+  const apiBaseUrl = process.env.REACT_APP_BACKEND_API;
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
 useEffect(() => {

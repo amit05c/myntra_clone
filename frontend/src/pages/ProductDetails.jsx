@@ -16,6 +16,7 @@ import {
 // import { getCartData } from "../Redux/CartReducer/action";
 import axios from "axios";
 import { SingleProd } from "../Redux/AuthReducer/action";
+import { getData } from "../Redux/AppReducer/action";
 
 // import Aos from 'aos'
 // import "aos/dist/aos.css"
@@ -51,6 +52,7 @@ const ProductDetails = () => {
   const navigate= useNavigate()
   const  {data}  = useSelector((state) => state.AppReducer);
   const {isAuth}= useSelector(state=>state.AuthReducer)
+  const apiBaseUrl = process.env.REACT_APP_BACKEND_API;
  
   const dispatch = useDispatch();
   const [selectSize,setSize]= useState('')
@@ -83,7 +85,7 @@ const ProductDetails = () => {
     
 
   useEffect(() => {
-//     dispatch(getData())
+    dispatch(getData())
 //    dispatch(getCartData())
     //  SingleProd(id)
     //  .then(res=>console.log(res.data))
@@ -100,9 +102,8 @@ const ProductDetails = () => {
     }
      
     // console.log(newData)
-    
     if(selectSize!=="" && token){
-      await axios.post(`https://myntraserver-production.up.railway.app/cart/add/${id}`,newData,{
+      await axios.post(`${apiBaseUrl}/cart/add/${id}`,newData,{
         headers:{authorization: `bear ${token}`},  //authorization
       },)
     //   .then(()=>dispatch(getCartData()))
@@ -135,9 +136,11 @@ const ProductDetails = () => {
     // console.log(newData)
     
     if(selectSize!==""){
-      await axios.post(`https://62ed747cc1ef25f3da7a4746.mockapi.io/userdata`,newData)
+      await axios.post(`${apiBaseUrl}/cart/add/${id}`,newData,{
+        headers:{authorization: `bear ${token}`},  //authorization
+      },)
     //   .then(()=>dispatch(getCartData()))
-    //   .then(()=>navigate(`/checkout`))
+      .then(()=>navigate(`/cart`))
 
       setQty(1)
       setSize('')

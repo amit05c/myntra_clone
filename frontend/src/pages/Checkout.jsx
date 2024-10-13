@@ -7,6 +7,8 @@ const Checkout = () => {
     const toast = useToast()
     const navigate= useNavigate()
     const [Payemnt_method,setMethod]=useState(false)
+    const apiBaseUrl = process.env.REACT_APP_BACKEND_API;
+
 
     const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
@@ -97,7 +99,7 @@ const Checkout = () => {
         else{
       
           let token= JSON.parse(localStorage.getItem("token"))
-          axios.delete("https://myntraserver-production.up.railway.app/cart/checkout",{
+          axios.delete(`${apiBaseUrl}/cart/checkout`,{
             headers:{authorization: `bear ${token}`},  
           }).then(res=>{if(res.data="Item deleted"){
                  

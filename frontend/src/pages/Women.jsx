@@ -83,7 +83,7 @@ const Women = () => {
            p={['0.25rem','0.5rem','1rem']}
            borderRadius="2%"
            >
-            <Image src={el.image_url} w={['60%','70%','80%']} m="auto"/>
+            <Image src={el.image_url[0]} w={['60%','70%','80%']} m="auto"/>
             <Text as={"b"}>{el.item}</Text>
             {el.brand && <Text color={"gray"}>{`Brand: ${el.brand}`}</Text>} 
             <Text noOfLines={['2','1','1']}>{el.title}</Text>

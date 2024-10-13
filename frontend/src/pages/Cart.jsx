@@ -7,11 +7,12 @@ const Cart = () => {
   const [data,setData]= useState([])
   const [total,setTotal]= useState(0)
   const navigate= useNavigate()
+  const apiBaseUrl = process.env.REACT_APP_BACKEND_API;
 
   const token=JSON.parse(localStorage.getItem("token"))
   // console.log(token)
   const getData= ()=>{
-    axios.get(`https://myntraserver-production.up.railway.app/cart/cartData`,{
+    axios.get(`${apiBaseUrl}/cart/cartData`,{
       headers:{authorization: `bear ${token}`},  //authorization
     })
     .then(res=>{setData(res.data.data,setTotal(res.data.total))})
@@ -20,7 +21,7 @@ const Cart = () => {
 
   const handleDelete= (id)=>{
     console.log(id)
-     axios.delete(`https://myntraserver-production.up.railway.app/cart/delete/${id}`,{
+     axios.delete(`${apiBaseUrl}/cart/delete/${id}`,{
       headers:{authorization: `bear ${token}`},  //authorization
      })
      .then(res=>console.log(res.data))

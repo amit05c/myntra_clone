@@ -82,7 +82,7 @@ w="80%" >
   
     <GridItem key={el._id} shadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px;"}
     p={['0.25rem','0.5rem','1rem']}>
-      <Image src={el.image_url} w={['40%','50%','60%']} m="auto"/>
+      <Image src={el.image_url[0]} w={['40%','50%','60%']} m="auto"/>
       <Text as={"b"}>{el.item}</Text>
     {el.brand && <Text color={"gray"}>{`Brand: ${el.brand}`}</Text>}  
       {/* <Text>{el.title}</Text> */}
